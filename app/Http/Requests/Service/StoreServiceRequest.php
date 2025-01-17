@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Semester;
+namespace App\Http\Requests\Service;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSemesterRequest extends FormRequest
+class StoreServiceRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,7 +16,8 @@ class StoreSemesterRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'programme_id' => ['required', 'string'],
+            'description' => ['required'],
+            'image' => ['required', 'image'],
         ];
     }
 }

@@ -8,9 +8,11 @@ use App\Models\GeneralQuestion;
 use App\Models\Notice;
 use App\Models\Programme;
 use App\Models\Semester;
+use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Teacher;
 use App\Models\TeacherRating;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,14 +21,18 @@ class FrontendController extends Controller
     public function index()
     {
         session()->flash('showPopup', true);
-       
-        return view('frontend.index');
+        $galleries = Gallery::latest()->limit(6)->get();
+        $about = About::latest()->first();
+        $sliders = Slider::all();
+        $services = Service::orderBy('position')->limit(6)->get();
+        $teams = Team::orderBy('position')->get();
+        return view('frontend.index', compact('sliders', 'about', 'galleries','services','teams'));
     }
     public function aboutUs()
     {
-        $teachers = Teacher::with('ratings')->limit(3)->get();
+        $team = Team::where('position',1)->first();
         $about = About::latest()->first();
-        return view('frontend.aboutus', compact('about', 'teachers'));
+        return view('frontend.aboutus', compact('about','team'));
     }
     public function mission()
     {

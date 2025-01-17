@@ -8,9 +8,11 @@ use App\Http\Controllers\Admin\GeneralQuestionController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\ProgrammeController;
 use App\Http\Controllers\Admin\SemesterController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SystemSettingController;
 use App\Http\Controllers\Admin\TeacherController;
+use App\Http\Controllers\Admin\TeamController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,12 +25,11 @@ Route::resource('about', AboutController::class);
 Route::resource('gallery', GalleryController::class);
 Route::resource('generalQuestion', GeneralQuestionController::class);
 Route::resource('contact', ContactController::class);
-Route::resource('teacher', TeacherController::class);
 Route::resource('notice', NoticeController::class);
+Route::resource('team', TeamController::class);
 Route::put('notice/{notice}/updateStatus', [NoticeController::class, 'updateStatus'])->name('notice.updateStatus');
 
-Route::prefix('programme')->group(function () {
-    Route::resource('programme', ProgrammeController::class);
-    Route::resource('semester', SemesterController::class);
-    Route::resource('course', CourseController::class);
+Route::prefix('serivces')->group(function () {
+    Route::resource('service', ServiceController::class);
+    
 });

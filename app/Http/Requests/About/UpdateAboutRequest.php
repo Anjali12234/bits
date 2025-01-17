@@ -16,7 +16,7 @@ class UpdateAboutRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'video_url' => ['required', 'url'],
+            'video_url' => ['nullable', 'url'],
             'image' => ['nullable', 'image'],
             'description' => ['required'],
         ];

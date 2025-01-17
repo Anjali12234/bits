@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Bits</title>
+    <title>Bits Nepalgunj</title>
 
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/backend/vendors/images/treadmark.png') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/frontend/img/static-image/logo.jpg') }}" />
     <link rel="icon" type="image/png" sizes="32x32"
-        href="{{ asset('assets/backend/vendors/images/treadmark.png') }}" />
+        href="{{ asset('assets/frontend/img/static-image/logo.jpg') }}" />
     <link rel="icon" type="image/png" sizes="16x16"
-        href="{{ asset('assets/backend/vendors/images/treadmark.png') }}" />
+        href="{{ asset('assets/frontend/img/static-image/logo.jpg') }}" />
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 

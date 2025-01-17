@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Requests\Teacher;
+namespace App\Http\Requests\Service;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTeacherRequest extends FormRequest
+class UpdateServiceRequest extends FormRequest
 {
     public function authorize(): bool
     {
         return true;
     }
 
-   
+
     public function rules(): array
     {
         return [
-            'teacher_name' => ['required','string'],
-            'faculty_name' => ['required','string'],
-            'image' => ['nullable','image'],
+            'title' => ['required', 'string'],
             'description' => ['required'],
+            'image' => ['nullable', 'image'],
         ];
     }
 }

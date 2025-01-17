@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
-class About extends Model
+class Service extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
@@ -17,16 +17,15 @@ class About extends Model
         'title',
         'description',
         'image',
-        'video_url',
         'slug',
         'position',
     ];
-
+    
     protected function image(): Attribute
     {
         return Attribute::make(
             get: fn(?string $value) => $value ? Storage::disk('public')->url($value) : null,
-            set: fn($value) => $value ? $value->store('about', 'public') : null,
+            set: fn($value) => $value ? $value->store('services', 'public') : null,
         );
     }
     public function sluggable(): array
@@ -42,8 +41,8 @@ class About extends Model
     {
         parent::boot();
 
-        static::creating(function ($about) {
-            $about->position = static::max('position') + 1;
+        static::creating(function ($service) {
+            $service->position = static::max('position') + 1;
         });
     }
 }

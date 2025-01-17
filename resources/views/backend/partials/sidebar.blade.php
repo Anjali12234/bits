@@ -2,7 +2,7 @@
     <div class="brand-logo bg-white border-neutral-600">
         <a href="{{ route('admin.dashboard') }}">
             <img src="" alt="" />
-            <h5>NCMT</h5>
+            <h5>Brilliant IT Solution</h5>
 
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
@@ -43,8 +43,14 @@
 
                 </li>
                 <li class="dropdown">
-                    <a href="{{route('admin.teacher.index')}}" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-calendar4-week"></span><span class="mtext">Teacher</span>
+                    <a href="{{route('admin.service.create')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-calendar4-week"></span><span class="mtext">Service</span>
+                    </a>
+
+                </li>
+                <li class="dropdown">
+                    <a href="{{route('admin.team.index')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-calendar4-week"></span><span class="mtext">Team</span>
                     </a>
 
                 </li>
@@ -66,17 +72,7 @@
                     </a>
 
                 </li>
-                <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-file-earmark-text"></span
-                        ><span class="mtext">Our Programme</span>
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="{{route('admin.programme.create')}}">Programme</a></li>
-                        <li><a href="{{route('admin.semester.create')}}">Semester</a></li>
-                        <li><a href="{{route('admin.course.index')}}">Couse Content</a></li>
-                    </ul>
-                </li>
+                
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Gallery;
 use App\Models\Programme;
 use App\Models\Student;
 use App\Models\SystemSetting;
@@ -25,10 +26,10 @@ if (!function_exists('student')) {
     }
 }
 
-if (!function_exists('programmes')) {
-    function programmes()
+if (!function_exists('galleries')) {
+    function galleries()
     {
-        return Programme::all();
+        return Gallery::with('files')->get();
     }
 }
 if (!function_exists('teachers')) {

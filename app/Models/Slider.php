@@ -15,14 +15,13 @@ class Slider extends Model
     use HasFactory, SoftDeletes, Sluggable;
 
     protected $fillable = [
-        'title',
+        'title1',
+        'title2',
         'image',
         'slug',
         'position',
     ];
-    protected $casts = [
-        'type' => QuestionType::class,
-    ];
+    
     protected function image(): Attribute
     {
         return Attribute::make(
@@ -34,7 +33,7 @@ class Slider extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'title1'
             ]
         ];
     }

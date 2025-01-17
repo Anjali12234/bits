@@ -36,12 +36,23 @@
                 <div class="col-md-12 row">
 
                     <div class="form-group col-md-6">
-                        <label for="title">Title</label>
+                        <label for="title1">Title1</label>
 
-                        <input class="form-control" id="title" name="title" type="text"
-                            value="{{ old('title') }}" />
+                        <input class="form-control" id="title1" name="title1" type="text"
+                            value="{{ old('title1') }}" />
                         <span class="text-warning">
-                            @error('title')
+                            @error('title1')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="title2">Title2</label>
+
+                        <input class="form-control" id="title2" name="title2" type="text"
+                            value="{{ old('title2') }}" />
+                        <span class="text-warning">
+                            @error('title2')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -88,7 +99,7 @@
                         <tr>
                             <td class="table-plus">{{ $loop->iteration }}</td>
                             <td><img src="{{ $slider?->image }}" height="150" width="100" alt=""></td>
-                            <td>{{ $slider->title }}</td>
+                            <td>{{ $slider->title1 }}</td>
                             <td>
                                 <div class="dropdown">
                                     <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"

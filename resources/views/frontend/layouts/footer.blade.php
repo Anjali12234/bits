@@ -1,88 +1,108 @@
-<footer class="bg-black text-gray-200 py-4 px-5 md:px-28  text-center md:text-left font-poppins">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        <!-- About Section -->
-        <div class="mt-5 md:mt-12 w-80">
-            <div class="  rounded-full flex items-center justify-center md:justify-start">
-                <img src="{{ systemSetting()?->logo2 }}" class="h-34 w-34" alt="">
-            </div>
-
-            <div class="text-gray-400 text-justify text-base mt-10">
-                {!! systemSetting()?->footer_description !!}
-            </div>
-        </div>
-
-        <!-- Quick Links -->
-        <div class="mt-5 ml-0 md:ml-16 md:mt-12 ">
-            <h3 class="text-xl font-semibold mb-4  flex items-center justify-center md:justify-start">
-                Quick Links
-                <div class="ml-2 w-10 h-[1px] bg-yellow-500 mt-3"></div>
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-base">
-                <li><a href="{{ route('welcome') }}" class="hover:text-yellow-500">Home</a></li>
-                <li><a href="{{ route('aboutus') }}" class="hover:text-yellow-500">About Us</a></li>
-                <li><a href="{{ route('whyNcmt') }}" class="hover:text-yellow-500">Why NCMT</a></li>
-                <li><a href="{{ route('contact') }}" class="hover:text-yellow-500">Request Call Back</a></li>
-                <li><a href="{{ route('contact') }}" class="hover:text-yellow-500">Contact Us</a></li>
-            </ul>
-        </div>
-
-        <!-- Our Programme -->
-        <div class="mt-5 md:mt-12 ">
-             <h3 class="text-xl font-semibold mb-4  flex items-center justify-center md:justify-start">
-                Our Programme
-                <div class="ml-2 w-10 h-[1px] bg-yellow-500 mt-3"></div>
-            </h3>
-            <ul class="text-gray-400 space-y-2 text-base">
-                @foreach (programmes() as $programme)
-                    <li><a href="{{ route('programme', $programme) }}" class="hover:text-yellow-500">{{ $programme->programme_short_name }}</a></li>
-                @endforeach
-            </ul>
-        </div>
-
-        <!-- Get In Touch -->
-        <div class="mt-5 md:mt-12">
-             <h3 class="text-xl font-semibold mb-4  flex items-center justify-center md:justify-start ">
-                Get In Touch
-                <div class="ml-2 w-10 h-[1px] bg-yellow-500 mt-3"></div>
-            </h3>
-            <ul class="text-gray-400 space-y-2">
-                <li class="text-[18px]">{{ systemSetting()?->telephone_number }}</li>
-                <li class="text-[18px]">{{ systemSetting()?->phone_number }}</li>
-                <li>{{ systemSetting()?->address }}</li>
-                <li>Sunday - Friday, 6 AM to 12 PM</li>
-            </ul>
-            <!-- Social Media -->
-            <div class="mt-5 space-x-4 flex items-center justify-center md:justify-start">
-                <a href="{{ systemSetting()?->facebook_url }}" target="_blank"
-                    class="h-10 w-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                    </svg>
-                </a>
-                <a href="{{ systemSetting()?->youtube_url }}" target="_blank"
-                    class="h-10 w-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-black">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-youtube">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
-                        <path d="M10 9l5 3l-5 3z" />
-                    </svg>
-                </a>
+<footer class="footer-wrapper footer-layout3">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm footer-info_group style2">
+                    <div class="footer-info">
+                        <div class="footer-info_icon"><i class="fal fa-map-marker-alt"></i></div>
+                        <div class="media-body">
+                            <span class="footer-info_label">Office Address</span>
+                            <div class="footer-info_link">{{ systemSetting()?->address }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm footer-info_group style2">
+                    <div class="footer-info">
+                        <div class="footer-info_icon"><i class="fal fa-clock"></i></div>
+                        <div class="media-body">
+                            <span class="footer-info_label">Working Hours</span>
+                            <div class="footer-info_link">Weekdays 10am - 5pm Weekend 10am - 12pm</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm footer-info_group style2">
+                    <div class="footer-info">
+                        <div class="footer-info_icon"><i class="fal fa-phone-volume"></i></div>
+                        <div class="media-body">
+                            <span class="footer-info_label">Contact Us</span>
+                            <div class="footer-info_link"><a
+                                    href="mailto:{{ systemSetting()?->email }}">{{ systemSetting()?->email }}</a><br><a
+                                    href="tel:+2597462153">(+977) {{ systemSetting()?->phone_number }}</a></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-    <div class="mt-4 mb-4">
-        <hr class="text-gray-500">
-        <div class="text-sm flex justify-between justify-items-end">
-            <p class="mt-2">© Copyright <span class="text-[#FFC315]"><a href="">NCMT</a></span> 2020. All right
-                reserved.</p>
-            <p class="mt-2">Developed by <span class="text-[#FFC315]"><a href="">NCMT</a></span></p>
+    <div class="widget-area">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-6 col-lg-4 col-xl-auto" style="text-align: justify; width: 350px">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">About Us</h3>
+                        <div class="vs-widget-about">
+                            {{-- <p class="footer-text">Intrinsicly evisculate emerging cutting edge scenarios redefine
+                                    future-proof e-markets demand line</p> --}}
+                            <div class="">{!! systemSetting()?->footer_description !!}</div>
+
+                            <div class="footer-social">
+                                <a href="{{systemSetting()?->facebook_url}}"><i class="fab fa-facebook-f"></i></a>
+                                <a href="{{systemSetting()?->twitter_url}}"><i class="fab fa-twitter"></i></a>
+                                <a href="{{systemSetting()?->instagram_url}}"><i class="fab fa-instagram"></i></a>
+                                <a href="{{systemSetting()?->youtube_url}}"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2 col-xl-auto">
+                    <div class="widget widget_nav_menu  footer-widget">
+                        <h3 class="widget_title">Links</h3>
+                        <div class="menu-all-pages-container">
+                            <ul class="menu">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2 col-xl-auto">
+                    <div class="widget widget_nav_menu  footer-widget">
+                        <h3 class="widget_title">Explore</h3>
+                        <div class="menu-all-pages-container">
+                            <ul class="menu">
+                                <li><a href="#">What we Offer</a></li>
+                                <li><a href="#">Our Story</a></li>
+                                <li><a href="#">Latest Posts</a></li>
+                                <li><a href="#">Help Center</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-auto">
+                    <div class="widget footer-widget">
+                        <h3 class="widget_title">Office Maps</h3>
+                        <div class="footer-map">
+                            <iframe title="office location map"
+                                src="{{systemSetting()?->map_url}}"
+                                width="200" height="180" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-wrap">
+        <div class="container">
+            <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> 2022 <a class="text-white"
+                    href="index.html">TechBiz</a>. All rights reserved by <a class="text-white"
+                    href="https://themeforest.net/user/vecuro_themes">Vecuro</a>.</p>
         </div>
     </div>
 </footer>
+
+
+<!-- Scroll To Top -->
+<a href="#" class="scrollToTop scroll-btn"><i class="far fa-arrow-up"></i></a>

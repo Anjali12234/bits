@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <div class="title">
-                        <h4>Teacher</h4>
+                        <h4>Team</h4>
                     </div>
                     <nav aria-label="breadcrumb" role="navigation">
                         <ol class="breadcrumb">
@@ -13,14 +13,14 @@
                                 <a href="{{ route('admin.dashboard') }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">
-                                Teacher
+                                Team
                             </li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-md-6 col-sm-12 text-right">
                     <div class="dropdown">
-                        <a class="btn btn-primary " href="{{ route('admin.teacher.index') }}" role="button">
+                        <a class="btn btn-primary " href="{{ route('admin.team.index') }}" role="button">
                             Back
                         </a>
 
@@ -38,17 +38,17 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('admin.teacher.store') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('admin.team.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="col-md-12 row">
 
                     <div class="form-group col-md-6">
-                        <label for="teacher_name">Teacher Name <span style="color: red; margin-left: 5px;">*</span></label>
+                        <label for="name">Name <span style="color: red; margin-left: 5px;">*</span></label>
 
-                        <input class="form-control" id="teacher_name" name="teacher_name" type="text"
-                            value="{{ old('teacher_name') }}" />
+                        <input class="form-control" id="name" name="name" type="text"
+                            value="{{ old('name') }}" />
                         <span class="text-warning">
-                            @error('teacher_name')
+                            @error('name')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -56,7 +56,7 @@
                     <div class="form-group col-md-6">
                         <label for="image">Image<span style="color: red; margin-left: 5px;">*</span></label>
 
-                       <input type="file" name="image" id="image" class="form-control">
+                        <input type="file" name="image" id="image" class="form-control">
                         <span class="text-warning">
                             @error('image')
                                 {{ $message }}
@@ -64,12 +64,23 @@
                         </span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="faculty_name">Faculty Name<span style="color: red; margin-left: 5px;">*</span></label>
+                        <label for="post">Post<span style="color: red; margin-left: 5px;">*</span></label>
 
-                        <input class="form-control" id="faculty_name" name="faculty_name" type="text"
-                            value="{{ old('faculty_name') }}" />
+                        <input class="form-control" id="post" name="post" type="text"
+                            value="{{ old('post') }}" />
                         <span class="text-warning">
-                            @error('faculty_name')
+                            @error('post')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="experience">Experience<span style="color: red; margin-left: 5px;">*</span></label>
+
+                        <input class="form-control" id="experience" name="experience" type="text"
+                            value="{{ old('experience') }}" />
+                        <span class="text-warning">
+                            @error('experience')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -86,12 +97,23 @@
                         </span>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="phone_number">Phone Number</label>
+                        <label for="phone">Phone Number</label>
 
-                        <input class="form-control" id="phone_number" name="phone_number" type="number"
-                            value="{{ old('phone_number') }}" />
+                        <input class="form-control" id="phone" name="phone" type="number"
+                            value="{{ old('phone') }}" />
                         <span class="text-warning">
-                            @error('phone_number')
+                            @error('phone')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="fax">Fax Number</label>
+
+                        <input class="form-control" id="fax" name="fax" type="text"
+                            value="{{ old('fax') }}" />
+                        <span class="text-warning">
+                            @error('fax')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -107,7 +129,7 @@
                             @enderror
                         </span>
                     </div>
-                   
+
 
 
                 </div>
@@ -115,7 +137,7 @@
                     <div class="form-group col-md-12">
                         <label for="facebook_url">Facebook Url</label>
                         <input class="form-control" id="facebook_url" name="facebook_url" type="text"
-                        value="{{ old('facebook_url') }}" />
+                            value="{{ old('facebook_url') }}" />
                         <span class="text-warning">
                             @error('facebook_url')
                                 {{ $message }}
@@ -123,9 +145,39 @@
                         </span>
                     </div>
                     <div class="form-group col-md-12">
+                        <label for="twitter_url">Twitter Url</label>
+                        <input class="form-control" id="twitter_url" name="twitter_url" type="text"
+                            value="{{ old('twitter_url') }}" />
+                        <span class="text-warning">
+                            @error('twitter_url')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="youtube_url">Youtube Url</label>
+                        <input class="form-control" id="youtube_url" name="youtube_url" type="text"
+                            value="{{ old('youtube_url') }}" />
+                        <span class="text-warning">
+                            @error('youtube_url')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="portfolio_url">Portfolio Url</label>
+                        <input class="form-control" id="portfolio_url" name="portfolio_url" type="text"
+                            value="{{ old('portfolio_url') }}" />
+                        <span class="text-warning">
+                            @error('portfolio_url')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-12">
                         <label for="instagram_url">Instagram Url</label>
                         <input class="form-control" id="instagram_url" name="instagram_url" type="text"
-                        value="{{ old('instagram_url') }}" />
+                            value="{{ old('instagram_url') }}" />
                         <span class="text-warning">
                             @error('instagram_url')
                                 {{ $message }}
@@ -141,18 +193,15 @@
                             @enderror
                         </span>
                     </div>
-                  
-                    
-
                 </div>
-                
+
                 <div>
                     <button class="btn btn-danger" type="submit">Submit</button>
                 </div>
             </form>
 
         </div>
-      
+
 
     </div>
 @endsection

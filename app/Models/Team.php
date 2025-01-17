@@ -9,31 +9,41 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
-class About extends Model
+class Team extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
     protected $fillable = [
-        'title',
-        'description',
         'image',
-        'video_url',
+        'name',
+        'post',
+        'experience',
+        'phone',
+        'email',
+        'address',
+        'fax',
+        'portfolio_url',
+        'facebook_url',
+        'twitter_url',
+        'instagram_url',
+        'youtube_url',
+        'description',
         'slug',
         'position',
     ];
-
+    
     protected function image(): Attribute
     {
         return Attribute::make(
             get: fn(?string $value) => $value ? Storage::disk('public')->url($value) : null,
-            set: fn($value) => $value ? $value->store('about', 'public') : null,
+            set: fn($value) => $value ? $value->store('teams', 'public') : null,
         );
     }
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }
@@ -42,8 +52,8 @@ class About extends Model
     {
         parent::boot();
 
-        static::creating(function ($about) {
-            $about->position = static::max('position') + 1;
+        static::creating(function ($team) {
+            $team->position = static::max('position') + 1;
         });
     }
 }

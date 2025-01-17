@@ -8020,8 +8020,8 @@ blockquote.vs-quote .quote-author {
   display: flex;
   align-items: center;
   border-right: 2px solid var(--theme-color);
-  padding: 0 40px 0 0;
-  margin: 0 40px 0 0;
+  padding: 0 19px 0 0;
+  margin: 0px 25px 0 0px;
 }
 .about-call__icon {
   background-color: var(--white-color);
