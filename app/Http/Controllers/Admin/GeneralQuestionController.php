@@ -19,8 +19,7 @@ class GeneralQuestionController extends Controller
     }
     public function create()
     {
-       $programmes = Programme::all();
-        return view('admin.generalQuestion.create',compact('programmes'));
+        return view('admin.generalQuestion.create');
     }
     
     public function store(StoreGeneralQuestionRequest $request)

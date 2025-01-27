@@ -25,7 +25,7 @@
                 <div class="pd-20 card-box height-100-p">
                     <div class="profile-photo">
 
-                        <img src="{{ asset('assets/backend/vendors/images/photo1.jpg') }}" alt=""
+                        <img src="{{ asset('assets/backend/vendors/images/photo1.jpg') }}"  alt=""
                             class="avatar-photo" />
                         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                             aria-hidden="true">

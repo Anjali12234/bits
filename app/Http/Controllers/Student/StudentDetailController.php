@@ -14,8 +14,6 @@ class StudentDetailController extends Controller
     public function create()
 {
     $student = Auth::guard('student')->user();
-
-    // Retrieve the related StudentDetail
     $studentDetail = StudentDetail::with('student')->where('student_id', $student->id)->first();
 
     return view('student.profile', compact('student', 'studentDetail'));
@@ -43,6 +41,11 @@ class StudentDetailController extends Controller
             $student->update($studentUpdatedData);
             return redirect()->back()->with('status', 'You have successfully addedd your detail. To add post wait until the your account is not verified. For other information contact on the given contact on the site.');
          }
+    }
+
+    public function certificatePage()
+    {
+        return view('student.certificate');
     }
     
 

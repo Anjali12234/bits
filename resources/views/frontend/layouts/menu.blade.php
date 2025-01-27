@@ -15,7 +15,7 @@
                     <a href="{{ route('aboutus') }}">About Us</a>
                 </li>
                 <li>
-                    <a href="blog.html">Services</a>
+                    <a href="{{route('service')}}">Services</a>
 
                 </li>
                 <li>
@@ -24,7 +24,10 @@
                 </li>
 
                 <li>
-                    <a href="contact.html">Contact Us</a>
+                    <a href="{{route('contact')}}">Contact Us</a>
+                </li>
+                <li>
+                    <a href="{{ route('certificatePage') }}">Certificate</a>
                 </li>
             </ul>
         </div>

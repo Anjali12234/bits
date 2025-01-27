@@ -43,6 +43,18 @@
 
                 </li>
                 <li class="dropdown">
+                    <a href="{{route('admin.course.index')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-calendar4-week"></span><span class="mtext">Course</span>
+                    </a>
+
+                </li>
+                <li class="dropdown">
+                    <a href="{{route('admin.student.index')}}" class="dropdown-toggle no-arrow">
+                        <span class="micon bi bi-calendar4-week"></span><span class="mtext">Student</span>
+                    </a>
+
+                </li>
+                <li class="dropdown">
                     <a href="{{route('admin.service.create')}}" class="dropdown-toggle no-arrow">
                         <span class="micon bi bi-calendar4-week"></span><span class="mtext">Service</span>
                     </a>

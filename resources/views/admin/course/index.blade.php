@@ -40,9 +40,7 @@
                     <thead>
                         <tr>
                             <th class="table-plus datatable-nosort">S.No</th>
-                            <th>Programme Name</th>
-                            <th>Semester Name</th>
-                            <th>Title </th>
+                            <th>Curse Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -50,9 +48,7 @@
                         @foreach ($courses as $key => $course)
                             <tr>
                                 <td class="table-plus">{{ $loop->iteration }}</td>                               
-                                <td>{{ $course->semester->programme->programme_short_name }}</td>
-                                <td>{{ $course->semester->title }}</td>
-                                <td>{{ $course->course_title }}</td>
+                                <td>{{ $course->course_name }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"

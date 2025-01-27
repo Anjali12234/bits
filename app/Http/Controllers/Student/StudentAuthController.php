@@ -45,7 +45,7 @@ class StudentAuthController extends Controller
         ['email' => $request->email, 'password' => $request->password],
         $request->get('remember')
     )) {
-        return redirect(route('student.dashboard'));
+        return redirect(route('student.certificatePage'));
     }
 
     return back()->withErrors(['email' => 'The provided credentials do not match our records.']);

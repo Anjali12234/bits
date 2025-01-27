@@ -72,7 +72,7 @@
                         <h3 class="widget_title">Explore</h3>
                         <div class="menu-all-pages-container">
                             <ul class="menu">
-                                <li><a href="#">What we Offer</a></li>
+                                <li><a href="{{route('team')}}">Our Team</a></li>
                                 <li><a href="#">Our Story</a></li>
                                 <li><a href="#">Latest Posts</a></li>
                                 <li><a href="#">Help Center</a></li>

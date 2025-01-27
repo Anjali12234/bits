@@ -4,7 +4,10 @@ namespace App;
 
 enum QuestionType:string
 {
-    case WhyNCMT = 'whyNCMT';
+    case AboutUs = 'about-us';
+    case Index = 'index';
+    case Service = 'service';
+    case Team = 'team';
  
 
     public function label(): string
@@ -15,7 +18,10 @@ enum QuestionType:string
     public static function getLabel(self $value): string
     {
         return match ($value) {
-            self::WhyNCMT => 'whyNCMT',
+            self::AboutUs => 'about-us',
+            self::Index => 'index',
+            self::Service => 'service',
+            self::Team => 'team',
            
         };
     }
