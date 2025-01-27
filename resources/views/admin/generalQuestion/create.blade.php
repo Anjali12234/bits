@@ -60,9 +60,7 @@
                             @foreach(\App\QuestionType::cases() as $case)
                             <option value="{{$case->value}}" >{{$case->label()}}</option>
                             @endforeach
-                            @foreach($programmes as $programme)
-                            <option value="{{$programme->id}}" >{{$programme->programme_short_name}}</option>
-                            @endforeach
+                           
                         </select>
                         <span class="text-warning">
                             @error('type')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Course;
 use App\Models\Gallery;
 use App\Models\GeneralQuestion;
 use App\Models\Notice;
@@ -10,11 +11,13 @@ use App\Models\Programme;
 use App\Models\Semester;
 use App\Models\Service;
 use App\Models\Slider;
+use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\TeacherRating;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class FrontendController extends Controller
 {
@@ -26,100 +29,65 @@ class FrontendController extends Controller
         $sliders = Slider::all();
         $services = Service::orderBy('position')->limit(6)->get();
         $teams = Team::orderBy('position')->get();
-        return view('frontend.index', compact('sliders', 'about', 'galleries','services','teams'));
+        return view('frontend.index', compact('sliders', 'about', 'galleries', 'services', 'teams'));
     }
     public function aboutUs()
     {
-        $team = Team::where('position',1)->first();
+        $team = Team::where('position', 1)->first();
         $about = About::latest()->first();
-        return view('frontend.aboutus', compact('about','team'));
+        return view('frontend.aboutus', compact('about', 'team'));
     }
-    public function mission()
+    public function service()
     {
-
-        return view('frontend.mission');
+        $services = Service::orderBy('position')->get();
+        return view('frontend.services.service', compact('services'));
     }
-    public function whyNcmt()
+    public function serviceDetail(Service $service)
     {
+        $services = Service::orderBy('position')->get();
+        $generalQuestions = GeneralQuestion::where('type', 'service')->get();
 
-        return view('frontend.whyNcmt');
+        return view('frontend.services.serviceDetail', compact('service', 'services', 'generalQuestions'));
+    }
+    public function team()
+    {
+        $teams = Team::orderBy('position')->get();
+        return view('frontend.teams.team', compact('teams'));
+    }
+    public function teamDetail(Team $team)
+    {
+        $teams = Team::orderBy('position')->get();
+
+        return view('frontend.teams.teamDetail', compact('team', 'teams'));
     }
     public function contact()
     {
 
         return view('frontend.contact');
     }
-    public function teacher(Teacher $teacher)
+    public function certificatePage()
     {
-        $student = Auth::guard('student')->user();
-        $averageRating = TeacherRating::where('teacher_id', $teacher->id)->avg('rating');
-        $averageTeachingSkillRating = TeacherRating::where('teacher_id', $teacher->id)->avg('teaching_skill');
-        $averageCommunicationSkillRating = TeacherRating::where('teacher_id', $teacher->id)->avg('communication_skill');
-        $averageSubjectKnowledgeRating = TeacherRating::where('teacher_id', $teacher->id)->avg('subject_knowledge');
-        $averageClassPerformanceRating = TeacherRating::where('teacher_id', $teacher->id)->avg('class_performance');
-        $averageInteractiveTeachingRating = TeacherRating::where('teacher_id', $teacher->id)->avg('interactive_teaching');
-        $totalAverageRating = (
-            $averageTeachingSkillRating +
-            $averageCommunicationSkillRating +
-            $averageSubjectKnowledgeRating +
-            $averageClassPerformanceRating +
-            $averageInteractiveTeachingRating
-        ) / 5;
+        return view('student.certificate');
+    }
+    public function certificateGenerate(Request $request)
+    {
+        $request->validate([
+            'registration_no' => 'required|exists:students,registration_no',
+        ]);
 
-        $studentRatings = TeacherRating::where('teacher_id', $teacher->id)
-            ->where('student_id', $student?->id) // Ensure it's for the authenticated student
-            ->first();
+        $student = Student::where('registration_no', $request->registration_no)->first();
+ $courseIds = is_array($student->course) ? $student->course : explode(',', $student->course);
 
-        if ($studentRatings) {
-            $totalAverageStudentRating = (
-                $studentRatings->teaching_skill +
-                $studentRatings->communication_skill +
-                $studentRatings->subject_knowledge +
-                $studentRatings->class_performance +
-                $studentRatings->interactive_teaching
-            ) / 5;
+        // Fetch course names matching the course IDs
+        $courses = Course::whereIn('id', $courseIds)->pluck('course_name')->toArray();
+
+        return view('student.certificate', compact('student', 'courses'));
+
+        if ($student) {
+            return view('student.certificate', compact('student'));
         } else {
-            $totalAverageStudentRating = 0; // Handle case where no ratings exist for the student
+            Alert::error('Error', 'Student not found');
+            return redirect()->back();
         }
-        return view('frontend.teacher', compact(
-            'teacher',
-            'averageRating',
-            'averageTeachingSkillRating',
-            'averageCommunicationSkillRating',
-            'averageSubjectKnowledgeRating',
-            'averageClassPerformanceRating',
-            'averageInteractiveTeachingRating',
-            'totalAverageRating',
-            'student',
-            'totalAverageStudentRating',
-        ));
     }
-    public function programme(Programme $programme)
-    {
-        $programme->load('semesters');
-        $generalQuestions = GeneralQuestion::where('type', $programme->id)->get();
-        $programmes = Programme::all();
-
-        return view('frontend.programme.programmeList',
-            compact('programme', 'programmes', 'generalQuestions')
-        );
-    }
-    public function semester(Semester $semester)
-    {
-        $semesters = Semester::with('programme')
-            ->whereHas('programme', function ($query) use ($semester) {
-                $query->where('programme_short_name', $semester->programme->programme_short_name);
-            })
-            ->get();
-        $generalQuestions = GeneralQuestion::where('type', $semester->programme->id)->get();
-        $totalCreditHr = $semester->courses->sum('credit_hr');
-        $totalLectureHr = $semester->courses->sum('lecture_hr');
-        $totalTutorialHr = $semester->courses->sum('tutorial_hr');
-        $totalLabHr = $semester->courses->sum('lab_hr');
-        $totalHr = $semester->courses->sum('total_hr');
-        return view('frontend.programme.semester',
-            compact('semester', 'generalQuestions', 'semesters', 'totalCreditHr', 'totalLectureHr', 'totalTutorialHr', 'totalLabHr', 'totalHr')
-        );
-    }
-
 }

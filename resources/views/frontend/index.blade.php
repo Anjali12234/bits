@@ -40,7 +40,7 @@
                         class="ls-l ls-hide-tablet ls-hide-phone ls-html-layer"
                         data-ls="offsetyin:50; durationin:1500; delayin:900; easingin:easeOutQuint; offsetyout:50; durationout:1500; easingout:easeOutQuint; position:relative;">
                         <div class="ls-btn-group justify-content-center">
-                            <a href="about.html" class="vs-btn ls-hero-btn">ABOUT US<i class="far fa-arrow-right"></i></a>
+                            <a href="{{route('aboutus')}}" class="vs-btn ls-hero-btn">ABOUT US<i class="far fa-arrow-right"></i></a>
                             <a href="blog.html" class="vs-btn style2 ls-hero-btn">READ MORE<i
                                     class="far fa-arrow-right"></i></a>
                         </div>
@@ -79,7 +79,7 @@
                         class="ls-l ls-hide-desktop ls-hide-phone ls-html-layer"
                         data-ls="offsetyin:50; durationin:1500; delayin:900; easingin:easeOutQuint; offsetyout:50; durationout:1500; easingout:easeOutQuint; position:relative;">
                         <div class="ls-btn-group justify-content-center">
-                            <a href="about.html" class="vs-btn ls-hero-btn">ABOUT US<i class="far fa-arrow-right"></i></a>
+                            <a href="{{route('aboutus')}}" class="vs-btn ls-hero-btn">ABOUT US<i class="far fa-arrow-right"></i></a>
                             <a href="blog.html" class="vs-btn style2 ls-hero-btn">READ MORE<i
                                     class="far fa-arrow-right"></i></a>
                         </div>
@@ -104,7 +104,7 @@
                         class="ls-l ls-hide-desktop ls-hide-tablet ls-html-layer"
                         data-ls="offsetyin:50; durationin:1500; delayin:900; easingin:easeOutQuint; offsetyout:50; durationout:1500; easingout:easeOutQuint; position:relative;">
                         <div class="ls-btn-group justify-content-center">
-                            <a href="about.html" class="vs-btn ls-hero-btn">ABOUT US<i class="far fa-arrow-right"></i></a>
+                            <a href="{{route('aboutus')}}" class="vs-btn ls-hero-btn">ABOUT US<i class="far fa-arrow-right"></i></a>
                             <a href="blog.html" class="vs-btn style2 ls-hero-btn">READ MORE<i
                                     class="far fa-arrow-right"></i></a>
                         </div>
@@ -157,10 +157,10 @@
                                     data-bg-src="{{ asset('assets/frontend/img/bg/sr-box-bg-1.jpg') }}">
                                 </div>
                                 <div class="service-icon"><img src="{{ $service->image }}" alt="Features"></div>
-                                <h3 class="service-title h5"><a href="service-details.html">{{ $service->title }}</a>
+                                <h3 class="service-title h5"><a href="{{route('serviceDetail',$service)}}">{{ $service->title }}</a>
                                 </h3>
                                 <p class="service-text">{!! Str::limit(strip_tags($service?->description), 100, '...') !!}</p>
-                                <a href="service-details.html" class="vs-btn style3">Read More<i
+                                <a href="{{route('serviceDetail',$service)}}" class="vs-btn style3">Read More<i
                                         class="far fa-long-arrow-right"></i></a>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                 <div class="team-img">
                                     <div class="team-shape1"></div>
                                     <div class="team-shape2"></div>
-                                    <a href="team-details.html"><img src="{{ $team->image }}" style="height: 341px;"
+                                    <a href="{{route('teamDetail',$team)}}"><img src="{{ $team->image }}" style="height: 341px;"
                                             alt="image"></a>
                                     <div class="team-social">
                                         <a href="{{ $team->facebook_url }}"><i class="fab fa-facebook-f"></i></a>
@@ -202,7 +202,7 @@
                                 </div>
                                 <div class="team-content">
                                     <h3 class="team-title h5"><a class="text-inherit"
-                                            href="team-details.html">{{ $team->name }}</a></h3>
+                                            href="{{route('teamDetail',$team)}}">{{ $team->name }}</a></h3>
                                     <p class="team-degi">{{ $team->post }}</p>
                                 </div>
                             </div>

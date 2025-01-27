@@ -31,7 +31,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" action="{{ route('admin.service.update',$service) }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('admin.service.update', $service) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="col-md-12 row">
@@ -41,7 +41,7 @@
                         </label>
 
                         <input class="form-control" id="title" name="title" type="text"
-                            value="{{ old('title',$service->title) }}" />
+                            value="{{ old('title', $service->title) }}" />
                         <span class="text-warning">
                             @error('title')
                                 {{ $message }}
@@ -50,11 +50,37 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="image">Image<span style="color: red; margin-left: 5px;">*</span></label>
-<img src="{{$service->image}}" height="100" width="100" alt="">
+                        <img src="{{ $service->image }}" height="100" width="100" alt="">
                         <input class="form-control" id="image" name="image" type="file"
-                            value="{{ old('image',$service->image) }}" />
+                            value="{{ old('image', $service->image) }}" />
                         <span class="text-warning">
                             @error('image')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <label for="position">Position<span style="color: red; margin-left: 5px;">*</span>
+                        </label>
+
+                        <input class="form-control" id="position" name="position" type="number"
+                            value="{{ old('position', $service->position) }}" />
+                        <span class="text-warning">
+                            @error('position')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <label for="slug">Slug<span style="color: red; margin-left: 5px;">*</span>
+                        </label>
+
+                        <input class="form-control" id="slug" name="slug" type="text"
+                            value="{{ old('slug', $service->slug) }}" />
+                        <span class="text-warning">
+                            @error('slug')
                                 {{ $message }}
                             @enderror
                         </span>
@@ -62,7 +88,7 @@
                 </div>
                 <div class="form-group col-md-12">
                     <label for="description">Description<span style="color: red; margin-left: 5px;">*</span></label>
-                    <textarea name="description" id="editor" cols="50" rows="10">{{ old('description',$service->description) }}</textarea>
+                    <textarea name="description" id="editor" cols="50" rows="10">{{ old('description', $service->description) }}</textarea>
                     <span class="text-warning">
                         @error('description')
                             {{ $message }}
@@ -75,7 +101,7 @@
             </form>
 
         </div>
-       
+
 
     </div>
 @endsection

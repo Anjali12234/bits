@@ -78,7 +78,28 @@
                             @enderror
                         </span>
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="position">Position</label>
 
+                        <input class="form-control" id="position" name="position" type="number"
+                            value="{{ old('position', $generalQuestion->position) }}" />
+                        <span class="text-warning">
+                            @error('position')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="slug">Slug</label>
+
+                        <input class="form-control" id="slug" name="slug" type="text"
+                            value="{{ old('slug', $generalQuestion->slug) }}" />
+                        <span class="text-warning">
+                            @error('slug')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
 
                 </div>
                 <div class="col-md-12 row">

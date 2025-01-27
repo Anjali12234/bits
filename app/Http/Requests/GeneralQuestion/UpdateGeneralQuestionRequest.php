@@ -3,6 +3,7 @@
 namespace App\Http\Requests\GeneralQuestion;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateGeneralQuestionRequest extends FormRequest
 {
@@ -18,6 +19,8 @@ class UpdateGeneralQuestionRequest extends FormRequest
             'title' => ['required', 'string'],
             'type' => ['required', 'string'],
             'description' => ['required'],
+            'position' => ['required'],
+            'slug' => ['required', 'alpha_dash', Rule::unique('general_questions', 'slug')->ignore($this->generalQuestion)],
         ];
     }
 }
