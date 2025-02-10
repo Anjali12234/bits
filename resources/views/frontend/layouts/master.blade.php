@@ -44,8 +44,6 @@
     <!-- Layerslider -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/layerslider.min.css')}}">
     <!-- Magnific Popup -->
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/magnific-popup.min.css')}}">
-    <!-- Slick Slider -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/slick.min.css')}}">
     <!-- Theme Custom CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/style.css')}}">
@@ -55,16 +53,6 @@
 <body>
 
 
-   
-    <!--==============================
-     Preloader
-  ==============================-->
-    <div class="preloader  ">
-        <button class="vs-btn preloaderCls">Cancel Preloader </button>
-        <div class="preloader-inner">
-            <span class="loader"></span>
-        </div>
-    </div>
    @include('frontend.layouts.menu')
   @include('frontend.layouts.header')
    @yield('content')
