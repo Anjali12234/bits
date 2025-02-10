@@ -97,12 +97,10 @@
     <div class="copyright-wrap">
         <div class="container">
             <p class="copyright-text">Copyright <i class="fal fa-copyright"></i> 2022 <a class="text-white"
-                    href="index.html">TechBiz</a>. All rights reserved by <a class="text-white"
-                    href="https://themeforest.net/user/vecuro_themes">Vecuro</a>.</p>
+                    >Bits</a>.</p>
         </div>
     </div>
 </footer>
-
 
 <!-- Scroll To Top -->
 <a href="#" class="scrollToTop scroll-btn"><i class="far fa-arrow-up"></i></a>
